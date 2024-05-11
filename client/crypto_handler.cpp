@@ -194,7 +194,7 @@ bytes crypto_handler::generatePublicKey() {
  * @param usersList the list of current registered users.
  * @param payload the response payload which were going to parse.
  */
-void crypto_handler::setPublicKey(UsersList &usersList, const bytes &payload) {
+void crypto_handler::setPublicKey(users &usersList, const bytes &payload) {
     bytes uid;
     for (int i = 0; i < UID_SIZE; i++)
         uid.push_back(payload.at(i));

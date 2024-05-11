@@ -26,7 +26,7 @@ enum selection {
     INVALID_INPUT = -1
 };
 
-// Request codes
+// request codes
 static const uint16_t REG_REQ = 1100;
 static const uint16_t GET_USER_LIST_REQ = 1101;
 static const uint16_t GET_PUBKEY_REQ = 1102;

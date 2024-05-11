@@ -58,9 +58,9 @@ using namespace CryptoPP;
 #include <boost/filesystem.hpp>
 #include <random>
 #include "constants.h"
-#include "Utils.h"
+#include "utils.h"
 #include <algorithm>
-#include "UsersList.h"
+#include "users.h"
 #include <sstream>
 
 using std::string;
@@ -82,7 +82,7 @@ public:
     bytes generatePublicKey();
 
     // sets the public key for a user from the response payload
-    void setPublicKey(UsersList &usersList, const bytes &response);
+    void setPublicKey(users &usersList, const bytes &response);
 
     //loads the private key from me.info.
     void getPrivateKey();

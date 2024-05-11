@@ -2,14 +2,6 @@
  * Author : Netanel Shoshan
  * This class is responsible all requests and responses and IO from
  * and to the client.
- *
- *
- * TODO:
- * try-catch handling for catching errors better at:
- * requestBuilder()
- * saveUserInfo()
- * responseParser()
- * printMessages()
  */
 #include <iostream>
 #include <fstream>
@@ -19,7 +11,7 @@
 #include <boost/random/uniform_int_distribution.hpp>
 #include "client.h"
 #include "exceptions.h"
-#include "Utils.h"
+#include "utils.h"
 
 /**
  * 1. Initializes the request and the users vectors.
@@ -27,8 +19,8 @@
  *    the private key from me.info or will init. one.
  */
 client::client() {
-    request = new Request();
-    usersList = new UsersList();
+    request = new requests();
+    usersList = new users();
     keys = new crypto_handler();
 }
 
@@ -107,11 +99,11 @@ void client::printMenu() {
     std::cout << std::endl;
     std::cout << "SentinelChat client at your service." << std::endl << std::endl;
     std::cout << "110) Register" << std::endl;
-    std::cout << "120) Request for clients list" << std::endl;
-    std::cout << "130) Request for public key" << std::endl;
-    std::cout << "140) Request for waiting messages" << std::endl;
+    std::cout << "120) requests for clients list" << std::endl;
+    std::cout << "130) requests for public key" << std::endl;
+    std::cout << "140) requests for waiting messages" << std::endl;
     std::cout << "150) Send a text message" << std::endl;
-    std::cout << "151) Send a Request for symmetric key" << std::endl;
+    std::cout << "151) Send a requests for symmetric key" << std::endl;
     std::cout << "152) Send your symmetric key" << std::endl;
     std::cout << "153) Send a file" << std::endl;
     std::cout << "0) Exit client" << std::endl;
@@ -268,7 +260,7 @@ bool client::requestBuilder(int selection) {
     }
 }
 
-// returns Request code of the given user selection
+// returns requests code of the given user selection
 uint16_t client::getReqCode(int selection) {
     switch (selection) {
         case (REG):
@@ -346,7 +338,7 @@ void client::saveUserInfo(const bytes &response) {
  * the response code field
  * @param response
  */
-void client::responseParser(Response *response) {
+void client::responseParser(responses *response) {
     if (response->getServerVersion() != SERVER_VERSION)
         throw IncompatibleServerVersion();
 
@@ -459,7 +451,7 @@ void client::printMessages(const bytes &payload) {
             // try to parse it.
             switch (messageType) {
                 case (MSG_TYPE_GET_SYM_KEY): {
-                    std::cout << "Request For symmetric Key." << std::endl;
+                    std::cout << "requests For symmetric Key." << std::endl;
                     break;
                 }
                 case (MSG_TYPE_SEND_SYM_KEY): {

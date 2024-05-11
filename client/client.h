@@ -2,11 +2,11 @@
 #define CLIENT_HEADER
 
 #include <string>
-#include "UsersList.h"
+#include "users.h"
 #include "constants.h"
 #include "crypto_handler.h"
-#include "Request.h"
-#include "Response.h"
+#include "requests.h"
+#include "responses.h"
 #include <boost/algorithm/hex.hpp>
 
 using std::string;
@@ -18,8 +18,8 @@ private:
     * request, userlist,  keys and his username.
     * I choose to represent each one as byte vector(uchar).
     */
-    Request *request;
-    UsersList *usersList;
+    requests *request;
+    users *usersList;
     crypto_handler *keys;
     string userName;
 
@@ -71,11 +71,11 @@ public:
     // handle user input.
     bool io();
 
-    // returns the Request bytes
+    // returns the requests bytes
     const bytes &getRequest();
 
     //handle responses and parse is accordingly
-    void responseParser(Response *response);
+    void responseParser(responses *response);
 
     // gets client uuid from me.info
     static bytes getUUID();
