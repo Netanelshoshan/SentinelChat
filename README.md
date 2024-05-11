@@ -1,6 +1,6 @@
 # SentinelChat
 
-[![SentinelChat CI](https://github.com/netanelshoshan/SentinelChat/workflows/SentinelChat%20CI/badge.svg)](https://github.com/netanelshoshan/SentinelChat/actions/)
+[![SentinelChat CI](https://github.com/netanelshoshan/SentinelChat/workflows/SentinelChat%20CI/badge.svg)](https://github.com/netanelshoshan/SentinelChat/actions/workflows/ci.yml)
 
 SentinelChat is an end-to-end encrypted chat application that supports secure file transfer between clients using the Boost and CryptoPP libraries.
 
