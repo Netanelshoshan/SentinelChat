@@ -2,6 +2,8 @@
 
 [![SentinelChat CI](https://github.com/netanelshoshan/SentinelChat/workflows/SentinelChat%20CI/badge.svg)](https://github.com/netanelshoshan/SentinelChat/actions/workflows/ci.yml)
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 SentinelChat is an end-to-end encrypted chat application that supports secure file transfer between clients using the Boost and CryptoPP libraries.
 
 ⚠️ **CAUTION**: The encryption configuration used in this application is for demonstration purposes ONLY! Using CBC mode in AES with a constant IV value is not recommended. Instead, use GCM mode, which provides AEAD (Authenticated Encryption with Associated Data).
