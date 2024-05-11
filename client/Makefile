@@ -57,5 +57,6 @@ all:
 	@cp -r client server.info client2/
 
 clean:
+	@rm -rf cmake-build-debug
 	@rm -rf build client1/* client2/*
 	@rm -rf client ../server/__pycache__ ../server/server.db
