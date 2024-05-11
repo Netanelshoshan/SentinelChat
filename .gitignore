@@ -1,0 +1,4 @@
+cmake-build-debug
+build
+server/__pycache__
+server/.idea

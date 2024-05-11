@@ -52,11 +52,12 @@ endif
 all:
 	@cmake -S. -B build
 	@cmake --build build
-	@cp build/client .
-	@cp -r client server.info client1/
-	@cp -r client server.info client2/
-
+	@mkdir -p client1 client2
+	@cp -r client/server.info client1/
+	@cp -r client/server.info client2/
+	@cp -r build/client client1/
+	@cp -r build/client client2/
 clean:
-	@rm -rf cmake-build-debug
-	@rm -rf build client1/* client2/*
-	@rm -rf client ../server/__pycache__ ../server/server.db
+	@rm -rf client/cmake-build-debug
+	@rm -rf build client1 client2
+	@rm -rf ../server/__pycache__ ../server/server.db

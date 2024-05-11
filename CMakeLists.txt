@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.21)
 
 project(client)
-
 message(STATUS "start running cmake...")
-
+include_directories(.)
 set(CMAKE_CXX_STANDARD 20)
 
 # Detect the operating system and package manager
@@ -58,21 +57,21 @@ message(STATUS "CRYPTOPP_INCLUDE_DIRS: ${CRYPTOPP_INCLUDE_DIRS}")
 message(STATUS "CRYPTOPP_LIBRARIES: ${CRYPTOPP_LIBRARIES}")
 
 add_executable(client
-        constants.h
-        client.cpp
-        client.h
-        crypto_handler.cpp
-        crypto_handler.h
-        main.cpp
-        exceptions.h
-        requests.cpp
-        requests.h
-        responses.cpp
-        responses.h
-        users.cpp
-        users.h
-        utils.cpp
-        utils.h
+        client/constants.h
+        client/client.cpp
+        client/client.h
+        client/crypto_handler.cpp
+        client/crypto_handler.h
+        client/main.cpp
+        client/exceptions.h
+        client/requests.cpp
+        client/requests.h
+        client/responses.cpp
+        client/responses.h
+        client/users.cpp
+        client/users.h
+        client/utils.cpp
+        client/utils.h
 )
 
 target_link_libraries(client PRIVATE ${CRYPTOPP_LIBRARIES} ${Boost_LIBRARIES})
