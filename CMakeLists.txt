@@ -43,17 +43,27 @@ if (MACOS)
     endif ()
 
 else ()
-    set(CRYPTOPP_INCLUDE_DIRS "/usr/include/cryptopp")
-    set(CRYPTOPP_LIBRARIES "/usr/lib/aarch64-linux-gnu/libcryptopp.a")
-    if (NOT CRYPTOPP_INCLUDE_DIRS OR NOT CRYPTOPP_LIBRARIES)
+    set(CRYPTOPP_INCLUDE_DIR "/usr/include/cryptopp")
+
+    if (LINUX)
+        if (CMAKE_SYSTEM_PROCESSOR MATCHES "^aarch64")
+            set(CRYPTOPP_LIBRARIES "/usr/lib/aarch64-linux-gnu/libcryptopp.a")
+        elseif (CMAKE_SYSTEM_PROCESSOR MATCHES "^x86_64")
+            set(CRYPTOPP_LIBRARIES "/usr/lib/x86_64-linux-gnu/libcryptopp.a")
+        else ()
+            message(FATAL_ERROR "Unsupported architecture: ${CMAKE_SYSTEM_PROCESSOR}")
+        endif ()
+    endif ()
+
+    if (NOT CRYPTOPP_INCLUDE_DIR OR NOT CRYPTOPP_LIBRARIES)
         message(STATUS "Cryptopp not found. Installing Cryptopp using ${PACKAGE_MANAGER}...")
         execute_process(COMMAND sudo apt update)
         execute_process(COMMAND sudo apt install -y cmake make gcc build-essential libcrypto++-dev)
     endif ()
 endif ()
 
-include_directories(${CRYPTOPP_INCLUDE_DIRS})
-message(STATUS "CRYPTOPP_INCLUDE_DIRS: ${CRYPTOPP_INCLUDE_DIRS}")
+include_directories(${CRYPTOPP_INCLUDE_DIR})
+message(STATUS "CRYPTOPP_INCLUDE_DIR: ${CRYPTOPP_INCLUDE_DIR}")
 message(STATUS "CRYPTOPP_LIBRARIES: ${CRYPTOPP_LIBRARIES}")
 
 add_executable(client
