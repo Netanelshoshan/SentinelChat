@@ -23,48 +23,20 @@ For more information on secure software development, refer to the book "The Art 
 
 ## Installation
 
-### macOS
-
-1. Install Xcode command-line tools:
-```
-xcode-select --install
-```
-
-2. Install Homebrew package manager:
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-### Linux
-
-3. On linux, you can skip the previous steps and build the client:
-
-```
-cd client
+```bash
+# Check out the library.
+git clone https://github.com/Netanelshoshan/SentinelChat.git
+# Build the project
 make
+# Go to the server directory and run it.
+python3 server/server.py
+# In a seperate terminal, run the two clients
+cd client1/ && ./client
+cd client2/ && ./client
 ```
 
-6. Launch the server and clients in separate terminals:
-
 ```
-Server
-cd ../server/
-python3 server.py
-
-Client 1
-cd client/client1/
-./client
-
-Client 2
-cd client/client2/
-./client
-```
-
-
-
-## Usage
-
-To establish a secure connection between two clients:
+Follow the steps below to establish a secure connection between two clients:
 
 1. Register both clients.
 2. Retrieve the list of clients on both clients.
@@ -78,6 +50,7 @@ To establish a secure connection between two clients:
 10. Client B requests pending messages.
 
 After completing these steps, you can start chatting and sending files securely between the clients.
+```
 
 ## Architecture
 
